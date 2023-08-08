@@ -84,6 +84,10 @@ function [ rotationMatrix_m ] = getRotationMatrix( anm_v, quat_v, kind_s )
 hoaOrder = NumComponentsToOrder( length( anm_v ) );
 
 rot3x3_m         = QuaternionToMatrix( quat_v );
+
+% this requires the "Spherical-Harmonic-Transform" toolbox
+% https://github.com/polarch/Spherical-Harmonic-Transform
+% See also InitializePath.m
 rotationMatrix_m = getSHrotMtx( rot3x3_m, hoaOrder, kind_s );
 
 if( strcmp( kind_s, 'complex' ) == true )
